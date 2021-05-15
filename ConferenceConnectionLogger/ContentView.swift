@@ -13,24 +13,19 @@ struct Person: Identifiable, Codable {
     enum CodingKeys: CodingKey {
         case id, image, name
     }
-    var image: Data
     var name: String
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         // image = try container.decode(Data.self, forKey: .image)
         name = try container.decode(String.self, forKey: .name)
-        image = try container.decode(Data.self, forKey: .image)
-        
     }
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(image, forKey: .image)
         try container.encode(name, forKey: .name)
     }
-    init (image: Data, name: String){
+    init (image: Image, name: String){
         self.id = UUID()
-        self.image = image
         self.name = name
     }
 }
@@ -49,10 +44,10 @@ struct ContentView: View {
             VStack {
                 List(people){ person in
                     NavigationLink(destination: Image(person.name)){
-                        Image(person.name)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 44, height: 44)
+                            Image(person.name)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 44, height: 44)
                         Text(person.name)
                     }
                 }
@@ -88,7 +83,7 @@ struct ContentView: View {
         let url = getDocumentsDirectory()
         if let jpegData = inputImage?.jpegData(compressionQuality: 0.8) {
             try? jpegData.write(to: url, options: [.atomicWrite, .completeFileProtection])
-            let person = Person(image: jpegData, name: "Steve")
+            let person = Person(image: image!, name: "Steve")
             people.append(person)
             UIImageWriteToSavedPhotosAlbum(inputImage!, nil, nil, nil)
             let encoder = JSONEncoder()
