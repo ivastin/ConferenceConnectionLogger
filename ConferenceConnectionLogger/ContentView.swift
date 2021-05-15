@@ -72,8 +72,8 @@ struct ContentView: View {
         let defaults = UserDefaults.standard
         let decoder = JSONDecoder()
         if let savedPerson = defaults.object(forKey: "SavedPerson") as? Data {
-            if let loadedPerson = try? decoder.decode(Person.self, from: savedPerson) {
-                people.append(loadedPerson)
+            if let loadedPerson = try? decoder.decode([Person].self, from: savedPerson) {
+                self.people = loadedPerson
             }
         }
     }
@@ -87,7 +87,7 @@ struct ContentView: View {
             people.append(person)
             UIImageWriteToSavedPhotosAlbum(inputImage!, nil, nil, nil)
             let encoder = JSONEncoder()
-            if let encoded = try? encoder.encode(person) {
+            if let encoded = try? encoder.encode(people) {
                 let defaults = UserDefaults.standard
                 defaults.set(encoded, forKey: "SavedPerson")
             }
