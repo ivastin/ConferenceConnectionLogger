@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C18C6C2426528BFE003ADC8D /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18C6C2326528BFE003ADC8D /* ImageLoader.swift */; };
+		C18C6C2626528CB3003ADC8D /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18C6C2526528CB3003ADC8D /* DetailsView.swift */; };
 		C5704B43264FE3DA00C1A6D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5704B42264FE3DA00C1A6D1 /* AppDelegate.swift */; };
 		C5704B45264FE3DA00C1A6D1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5704B44264FE3DA00C1A6D1 /* SceneDelegate.swift */; };
 		C5704B47264FE3DA00C1A6D1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5704B46264FE3DA00C1A6D1 /* ContentView.swift */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C18C6C2326528BFE003ADC8D /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		C18C6C2526528CB3003ADC8D /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
 		C5704B3F264FE3DA00C1A6D1 /* ConferenceConnectionLogger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConferenceConnectionLogger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5704B42264FE3DA00C1A6D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C5704B44264FE3DA00C1A6D1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +70,8 @@
 				C5704B4D264FE3DB00C1A6D1 /* LaunchScreen.storyboard */,
 				C5704B50264FE3DB00C1A6D1 /* Info.plist */,
 				C5704B4A264FE3DB00C1A6D1 /* Preview Content */,
+				C18C6C2326528BFE003ADC8D /* ImageLoader.swift */,
+				C18C6C2526528CB3003ADC8D /* DetailsView.swift */,
 			);
 			path = ConferenceConnectionLogger;
 			sourceTree = "<group>";
@@ -150,8 +156,10 @@
 			files = (
 				C5704B43264FE3DA00C1A6D1 /* AppDelegate.swift in Sources */,
 				C5704B58264FE42100C1A6D1 /* ImagePicker.swift in Sources */,
+				C18C6C2426528BFE003ADC8D /* ImageLoader.swift in Sources */,
 				C5704B45264FE3DA00C1A6D1 /* SceneDelegate.swift in Sources */,
 				C5704B47264FE3DA00C1A6D1 /* ContentView.swift in Sources */,
+				C18C6C2626528CB3003ADC8D /* DetailsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

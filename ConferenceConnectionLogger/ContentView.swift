@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct Person: Identifiable, Codable {
+    static let personSaveKey = "SavedPersonsKeyv2"
     var id = UUID()
     
     enum CodingKeys: CodingKey {
@@ -22,6 +23,7 @@ struct Person: Identifiable, Codable {
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(name, forKey: .name)
+        try container.encode(id, forKey: .id)
     }
     init (name: String){
         self.id = UUID()
@@ -36,16 +38,6 @@ struct Person: Identifiable, Codable {
         return getDocumentsDirectory().appendingPathComponent(id)
     }
 }
-
-//struct DetailView: View {
-//    var person: Person
-//    var image : UIImage = UIImage(named:"afternoon")!
-//    bgImage.frame = CGRect(x: 0, y: 0, width: 100, height: 200)
-//    view.addSubview(bgImage)
-//    var body: some View {
-//        return UIImageView(image: image)
-//    }
-//}
 
 func getDocumentsDirectory() -> URL {
     let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
@@ -69,30 +61,37 @@ struct ContentView: View {
         NavigationView {
             VStack {
                 List(people){ person in
-                    NavigationLink(destination: Image("Steve")){
-                        Image("Steve")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 32.0, height: 32.0)
-                        Text(person.name)
-                    }
+//                    NavigationLink(destination: Image("Steve")){
+//                        Image("Steve")
+//                            .resizable()
+//                            .scaledToFit()
+//                            .frame(width: 32.0, height: 32.0)
+//                        Text(person.name)
+//                    }
+                    NavigationLink(
+                        destination: DetailsView(person: person),
+                        label: {
+                            Text(person.name)
+                        })
                 }
                 Button("Add"){
                     self.showSheet = true
                 }
             }
-            .onAppear(perform: loadUsers)
             .sheet(isPresented: $nameImage, onDismiss: saveUser){
                 TextField("Enter image name", text: $newPersonName)
                 Button("OK"){
-                    self.presentationMode.wrappedValue.dismiss()
+                    self.nameImage.toggle()
+                    //self.presentationMode.wrappedValue.dismiss()
                 }
             }
+            
         }
         .onAppear(perform: loadUsers)
         .sheet(isPresented: $showSheet, onDismiss: imageNamed) {
             ImagePicker(image: self.$inputImage)
         }
+        .onAppear(perform: loadUsers)
     }
     
     func imageNamed(){
@@ -107,10 +106,14 @@ struct ContentView: View {
     func loadUsers(){
         let defaults = UserDefaults.standard
         let decoder = JSONDecoder()
-        if let savedPerson = defaults.object(forKey: "SavedPerson") as? Data {
+        if let savedPerson = defaults.object(forKey: Person.personSaveKey) as? Data {
             if let loadedPerson = try? decoder.decode([Person].self, from: savedPerson) {
                 self.people = loadedPerson
+            } else {
+                print("cant load persons")
             }
+        } else {
+            print("no SavedPerson")
         }
     }
     
@@ -127,7 +130,7 @@ struct ContentView: View {
             let encoder = JSONEncoder()
             if let encoded = try? encoder.encode(people) {
                 let defaults = UserDefaults.standard
-                defaults.set(encoded, forKey: "SavedPerson")
+                defaults.set(encoded, forKey: Person.personSaveKey)
             }
         }
     }
