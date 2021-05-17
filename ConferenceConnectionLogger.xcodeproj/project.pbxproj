@@ -14,6 +14,7 @@
 		C5704B4C264FE3DB00C1A6D1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5704B4B264FE3DB00C1A6D1 /* Preview Assets.xcassets */; };
 		C5704B4F264FE3DB00C1A6D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5704B4D264FE3DB00C1A6D1 /* LaunchScreen.storyboard */; };
 		C5704B58264FE42100C1A6D1 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5704B57264FE42100C1A6D1 /* ImagePicker.swift */; };
+		C5F0D55826528B4F009ED0B8 /* LocationFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F0D55726528B4F009ED0B8 /* LocationFetcher.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		C5704B4E264FE3DB00C1A6D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C5704B50264FE3DB00C1A6D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C5704B57264FE42100C1A6D1 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		C5F0D55726528B4F009ED0B8 /* LocationFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFetcher.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				C5704B42264FE3DA00C1A6D1 /* AppDelegate.swift */,
 				C5704B44264FE3DA00C1A6D1 /* SceneDelegate.swift */,
 				C5704B46264FE3DA00C1A6D1 /* ContentView.swift */,
+				C5F0D55726528B4F009ED0B8 /* LocationFetcher.swift */,
 				C5704B57264FE42100C1A6D1 /* ImagePicker.swift */,
 				C5704B48264FE3DB00C1A6D1 /* Assets.xcassets */,
 				C5704B4D264FE3DB00C1A6D1 /* LaunchScreen.storyboard */,
@@ -150,6 +153,7 @@
 			files = (
 				C5704B43264FE3DA00C1A6D1 /* AppDelegate.swift in Sources */,
 				C5704B58264FE42100C1A6D1 /* ImagePicker.swift in Sources */,
+				C5F0D55826528B4F009ED0B8 /* LocationFetcher.swift in Sources */,
 				C5704B45264FE3DA00C1A6D1 /* SceneDelegate.swift in Sources */,
 				C5704B47264FE3DA00C1A6D1 /* ContentView.swift in Sources */,
 			);
