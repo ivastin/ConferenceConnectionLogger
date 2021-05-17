@@ -56,14 +56,9 @@ func getDocumentsDirectory() -> URL {
 
 struct ContentView: View {
     private var optionalData = UIImage(systemName: "Steve")?.jpegData(compressionQuality: 1)
-    @State private var imageSelected = false
-    @State private var pickImage = false
-    @State private var imageName = ""
     @State private var people = [Person]()
-    @State private var image: Image?
     @State private var showImageAddingSheet = false
     @State private var inputImage: UIImage?
-    @State private var editName = false
     @State private var nameImage = false
     @State private var newPersonName = ""
     var body: some View {
@@ -101,10 +96,6 @@ struct ContentView: View {
         nameImage = true
     }
     
-    func loadImage() {
-        guard let inputImage = inputImage else { return }
-        image = Image(uiImage: inputImage)
-    }
     
     func loadUsers(){
         let defaults = UserDefaults.standard
@@ -119,7 +110,6 @@ struct ContentView: View {
     func saveUser(){
         var newPerson = Person()
         newPerson.name = newPersonName
-        loadImage()
         let url = newPerson.getImageUrl()
         if let jpegData = inputImage?.jpegData(compressionQuality: 0.8) {
             try? jpegData.write(to: url, options: [.atomicWrite, .completeFileProtection])
